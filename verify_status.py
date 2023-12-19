@@ -1,4 +1,4 @@
-import subprocess, sys, os, argparse
+import subprocess, sys, os, argparse, signal
 
 parser = argparse.ArgumentParser()
 
@@ -48,7 +48,7 @@ for line in server_process.stdout:
     print(line, end="")
     if 'For help, type "help" or "?"' in line:
         result = True
-        server_process.send_signal(3)
+        os.kill(server_process.pid, signal.SIGINT)
 
 server_process.wait()
 if not result:

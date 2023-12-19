@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
     
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,5 +23,5 @@ jobs:
           git clone https://git.cinogama.net/BiDuang/wmstemplate.git
           cp *.jar wmstemplate/mods/
       - name: Test mods compatibility
-        run: python3 verify_status.py wmstemplate/forge-1.12.2-14.23.5.2860.jar -jarArgs "-Xms 4G"
+        run: python3 verify_status.py wmstemplate/forge-1.12.2-14.23.5.2860.jar
       
