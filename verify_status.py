@@ -25,14 +25,14 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-assert args.jar_path and os.path.isfile(args.jar_path), "Invalid jar path"
+assert args.jarPath and os.path.isfile(args.jarPath), "Invalid jar path"
 
 java_path = args.java_path or "java"
 jar_args = args.jar_args or ""
 
 result = False
 server_process = subprocess.Popen(
-    f"{java_path} -jar {args.jar_path} {jar_args} nogui",
+    f"{java_path} -jar {args.jarPath} {jar_args} nogui",
     shell=True,
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
