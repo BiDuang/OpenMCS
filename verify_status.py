@@ -4,7 +4,6 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument(
     "jarPath",
-    dest="jar_path",
     nargs="?",
     type=str,
     help="Specify the path to the server core file",
