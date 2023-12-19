@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' 
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+      - name: Prepare test server
+        run: |
+          git clone https://git.cinogama.net/BiDuang/wmstemplate.git
+          cp *.jar wmstemplate/mods/
+      - name: Test mods compatibility
+        run: python3 verify_status.py wmstemplate/forge-1.12.2-14.23.5.2860.jar
+      
