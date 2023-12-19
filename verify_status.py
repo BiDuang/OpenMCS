@@ -30,10 +30,12 @@ assert args.jarPath and os.path.isfile(args.jarPath), "Invalid jar path"
 java_path = args.java_path or "java"
 jar_args = args.jar_args or ""
 
+jarObsulutePath = os.path.abspath(args.jarPath)
+
 result = False
 # open subprocess at server jar location
 server_process = subprocess.Popen(
-    f"{java_path} -jar {args.jarPath} {jar_args} nogui",
+    f"{java_path} -jar {jarObsulutePath} {jar_args} nogui",
     shell=True,
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
