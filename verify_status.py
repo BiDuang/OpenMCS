@@ -31,12 +31,14 @@ java_path = args.java_path or "java"
 jar_args = args.jar_args or ""
 
 result = False
+# open subprocess at server jar location
 server_process = subprocess.Popen(
     f"{java_path} -jar {args.jarPath} {jar_args} nogui",
     shell=True,
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
     text=True,
+    cwd=os.path.dirname(args.jarPath),
 )
 print("[OMCS] 🚀 Starting server...")
 
